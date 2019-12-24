@@ -1,0 +1,144 @@
+{
+  "users": {
+    "123": {
+      "passwordHash": "$2b$10$o389nACd8i6bRhR0OyH.WeVNeO4RIocAfHM6MLn4Ng2d4xG59HF9e",
+      "data": {
+        "year": "firstYear",
+        "dorm": "hojo"
+      }
+    },
+    "333": {
+      "passwordHash": "$2b$10$To8ZAivGzl9mu6aV4jQvruVHKWy6T8Oe47ptuixJSNKXdM978Rf1m",
+      "data": {
+        "year": "firstYear",
+        "dorm": "Hinton James"
+      }
+    },
+    "1234": {
+      "passwordHash": "$2b$10$K5gj8HFndvg170GAGlCJjO0jr3QTk6rS8gsdGw.FQbdPt3Huwn236",
+      "data": {
+        "year": "firstYear",
+        "dorm": "hojo"
+      }
+    },
+    "1344": {
+      "passwordHash": "$2b$10$8F9BobWA7JtUIsg6RyaZLOfhNA4/ypzCPqExIj7d.Y7fRZVAB8cLC",
+      "data": {
+        "year": "firstYear",
+        "dorm": "hojo"
+      }
+    },
+    "123433": {
+      "passwordHash": "$2b$10$Q7X6ngWdOJlMZM8bkCPurOHoeioVY4SufH3KOMRia7ajMSlHvfc0y",
+      "data": {
+        "year": "firstYear",
+        "dorm": "hojo"
+      }
+    },
+    "test_user": {
+      "passwordHash": "$2b$10$1gGs1y.N.O/BuhCjgjCopOmw8nlycrgqXMEcw5NYCDXqlruSBKNPW",
+      "data": {
+        "year": "senior",
+        "dorm": "cobb"
+      }
+    },
+    "jenn": {
+      "passwordHash": "$2b$10$bVrQIdOznJLoGbwZenKxyOLYc6sn.t0Xkg32jCcHazotzHYn7ao7a",
+      "data": {
+        "year": "firstYear",
+        "dorm": "hojo"
+      }
+    },
+    "ddd": {
+      "passwordHash": "$2b$10$Un2bYX7s9xWO6w8lBUdxguJ5mKyR7AUY./fpXcX78VfjkdBfEQoKK",
+      "data": {
+        "year": "firstYear",
+        "dorm": "hojo"
+      }
+    },
+    "ff": {
+      "passwordHash": "$2b$10$9rHrgEjK4Gqd0Yg/hPClqez94.E2VsGNYUDd7fMZV.Ty2JjkPaHEy",
+      "data": {
+        "year": "firstYear",
+        "dorm": "hojo"
+      }
+    },
+    "another": {
+      "passwordHash": "$2b$10$mEw9VyDUuWwikhwv680VX.yfTbskHupooXaL2QikXB3tvydZPIttq",
+      "data": {
+        "year": "firstYear",
+        "dorm": "hojo"
+      }
+    },
+    "jennyy": {
+      "passwordHash": "$2b$10$znrOK0yOSL5zYdDAzgRmp.cJcIE1IQxnFUjJJhoExJBCQv55GnQWO",
+      "data": {
+        "year": "firstYear",
+        "dorm": "hojo"
+      }
+    },
+    "jennyyy": {
+      "passwordHash": "$2b$10$34oyzOmzfr1AJNM4AFER3.7GHWAiqkinK25FCoArCRtwHU.3WZe.a",
+      "data": {
+        "year": "firstYear",
+        "dorm": "hojo"
+      }
+    },
+    "jennyyy!": {
+      "passwordHash": "$2b$10$.1IEsHjZJ/gi6cxFUsX58.ycJWbbf7AxsniXuCSvIFX/WtR351SFi",
+      "data": {
+        "year": "firstYear",
+        "dorm": "hojo"
+      }
+    },
+    "joewl": {
+      "passwordHash": "$2b$10$1xWtnw.SF.zn40gc1hvVO.CqXQNg/9trHycwaYVO7BmrmGnd0ppLS",
+      "data": {
+        "year": "firstYear",
+        "dorm": "hojo"
+      }
+    },
+    "1234ee": {
+      "passwordHash": "$2b$10$4xNTPEFjrYDGYrXGZv9EZO4DeOzrmQfNc8zc0mlMPiNhH36cXFHDG",
+      "data": {
+        "year": "firstYear",
+        "dorm": "hojo"
+      }
+    },
+    "1234rrr": {
+      "passwordHash": "$2b$10$BXNbdjiDt.a9jAU9yMOrDuaOYp/Cf7wAvy3f/hLXB2JSsPVYnndXO",
+      "data": {
+        "year": "firstYear",
+        "dorm": "hojo"
+      }
+    },
+    "jennyy999": {
+      "passwordHash": "$2b$10$3T478MfDh9.F5NB9wv/h5.y6pfyaeZCbbtu5hCRFiwIcjmT.QUxby",
+      "data": {
+        "year": "senior",
+        "dorm": "craigNorth"
+      }
+    },
+    "trr": {
+      "passwordHash": "$2b$10$13mbzMAr/DN5nLWVuIaqG.zrT4HRG0SdeuH4YSSUAIk2T1ada1436",
+      "data": {
+        "year": "firstYear",
+        "dorm": "hojo"
+      }
+    },
+    "try agagin ": {
+      "passwordHash": "$2b$10$3kZvbm8xspi3MuQ7OpCK4OU0aR5kg4GtbLKvhUQ.AtPRWBJqcgvBy",
+      "data": {
+        "year": "sophomore",
+        "dorm": "Craige"
+      }
+    },
+    "jenny99": {
+      "passwordHash": "$2b$10$dB7A6uUjfO29YswcBW6iIOcJif9ymFkSS.rcrgoxbORmmEZENWQGG",
+      "data": {
+        "year": "senior",
+        "dorm": "hinton"
+      }
+    }
+  }
+}

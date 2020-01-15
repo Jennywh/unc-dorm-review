@@ -1,3 +1,13 @@
+.autocomplete-items {
+  position: absolute;
+  width: 100%;
+  background: white;
+  z-index: 1;
+  opacity: 0.8;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
 .viewMapBtn {
   background: #56a0d3;
 }
@@ -237,8 +247,8 @@ input[type=submit]:active {
   color: chocolate;
   font-size: larger;
   position: absolute;
-  left: 10%;
-  top: -25%;
+  left: -10%;
+  top: -36%;
   padding: 10px;
   border-radius: 5px;
   text-align: center;

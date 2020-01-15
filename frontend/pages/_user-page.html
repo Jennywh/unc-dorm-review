@@ -83,16 +83,9 @@
         <div class="content">
             <div class="level">
                 <div class="level-left">
-                    <img class="level-item" src="https://picsum.photos/200" alt="sample dorm image" />
+                    My reviews: 
                 </div>
-                <div class="texts">
-                    <div class="dorm-name">1.Hinton James</div>
-                    <div class="stars">⭐⭐⭐⭐ 20 reviews</div>
-                    <div class="sample-review">
-                        “Hinton James is a f* nightmare. The elevators broke all the
-                        time...” read more
-                    </div>
-                </div>
+                
             </div>
         </div>
     </section>
@@ -104,10 +97,9 @@
     <script>
 
 
-        const ALL_DORMS = ["Hinton James", "Horton", "Ram Village", "Hardin", "Craig", "Craig North"];
 
         function mainPage() {
-            $(".content").empty();
+            // $(".content").empty();
             (async () => {
                 let token = localStorage['jwt'];
                 if (token == undefined) {
@@ -115,39 +107,40 @@
                 } else {
                     let user_info = await axios.get("http://localhost:3000/account/status", { headers: { Authorization: "Bearer " + token } });
                     const apiUrl = 'http://localhost:3000/public/reviews/' + user_info.data.user.name;
-                    const res = await axios.get(apiUrl).then(it => it.data);
-                    let result = res.result;
-                    for (let i = 0; i < result.length; i++) {
-                        let dorm = result[i]['dorm'];
-                        let star = result[i]['score'];
-                        let review = result[i]['review'];
-                        let dormicon = dormImg[dorm]==undefined?'https://picsum.photos/120':dormImg[dorm]
-
-
-                        let dom = `
-                            <div class="level ">
-                                <div class="level-left">
-                                    <img class="level-item dorm-img" src=${dormicon} alt="sample dorm image" />
-                                </div>
-                                <div class="texts num${i}">
-                                    <div class="dorm-name">${dorm}</div>
-                                    <div class="stars">${star}</div>
-                                    <div class="sample-review">
-                                        ${review}
+                    console.log(user_info.data.user.name)
+                   
+                    const res = await axios.get(apiUrl)
+                    .then((resp)=>{
+                        let result = resp.data.result;
+                        for (let i = 0; i < result.length; i++) {
+                            let dorm = result[i]['dorm'];
+                            let star = result[i]['score'];
+                            let review = result[i]['review'];
+                            let dormicon = dormImg[dorm]==undefined?'https://picsum.photos/120':dormImg[dorm]
+                            let dom = `
+                                <div class="level ">
+                                    <div class="level-left">
+                                        <img class="level-item dorm-img" src=${dormicon} alt="sample dorm image" />
                                     </div>
-                                    
-                                </div>
-                            </div>`;
+                                    <div class="texts num${i}">
+                                        <div class="dorm-name">${dorm}</div>
+                                        <div class="stars">${star}</div>
+                                        <div class="sample-review">
+                                            ${review}
+                                        </div>
+                                        
+                                    </div>
+                                </div>`;
 
-                        $(dom).appendTo($(".content"));
-                        let id_edit = "edit" + i.toString();
-                        let id_del = "del" + i.toString();
-                        let edit = $('<button class="button is-primary" id = edit> Edit </button>');
-                        let del = $('<button class="button is-danger" id=del> Delete </button>');
+                            $(dom).appendTo($(".content"));
+                            let id_edit = "edit" + i.toString();
+                            let id_del = "del" + i.toString();
+                            let edit = $('<button class="button is-primary" id = edit> Edit </button>');
+                            let del = $('<button class="button is-danger" id=del> Delete </button>');
 
-                        edit.appendTo($(`.num${i}`));
-                        del.appendTo($(`.num${i}`));
-                        del.click((ev) => {
+                            edit.appendTo($(`.num${i}`));
+                            del.appendTo($(`.num${i}`));
+                            del.click((ev) => {
 
                             ev.preventDefault();
                             ev.stopPropagation();
@@ -200,6 +193,14 @@
                         }
                         )
                     }
+                    })
+                    .catch((err)=> {
+                        console.log(err)
+                        $(".content").empty()
+                        let dom = `<div class = 'level'> You do not leave any review. Try write a review by clicking 'Write reviews'.</div>`
+                        $(dom).appendTo($(".content"))
+                    })
+                    
                 }
             })();
         }
@@ -208,4 +209,4 @@
     </script>
 </body>
 
-</html>_
+</html>

@@ -16,6 +16,9 @@ function averageStar(reviews) {
 function unroll(kv) {
     let res = [];
     for (let k in kv) {
+        for (let c of kv[k]) {
+            c.author = k; // FIXME: hack
+        }
         res.push(...kv[k]);
     }
     return res;
@@ -24,11 +27,14 @@ function unroll(kv) {
 function domForDorm(index, dormName, reviews, averageStar) {
     const n = reviews.length;
     const sample = reviews.length === 0 ? "No reviews yet." : reviews[0].review;
-    let dormicon = dormImg[dormName]==undefined?'https://picsum.photos/120':dormImg[dormName]
-
+    let pic = dormImg[dormName];
+    if (!pic) {
+        pic = "https://picsum.photos/140";
+    }
+    
     const dom = `<div class="level">
     <div class='level-left'>
-        <img class='dorm-img' src=${dormicon} alt="sample dorm image" />
+        <img src=${pic} width="200" alt="sample dorm image" />
     </div>
     <div class="texts">
     
@@ -55,7 +61,8 @@ function domForReview(r) {
     `)
 }
 
-const ALL_DORMS = ["Hinton James", "Horton", "Ram Village", "Hardin", "Craig", "Craig North"];
+
+const ALL_DORMS = dormsArr.map(it => it.name);
 
 function mainPage() {
     $(".content").empty();
@@ -80,11 +87,16 @@ function mainPage() {
             const dom = domForDorm(i, d, reviews, avgStar);
             dom.find(".readmore").click(() => {
                 viewReviews(reviews);
-            })
+            });
             dom.appendTo($(".content"));
         })
+        // console.log("dorm rendered");
+        //console.log(window.renderMap);
+        window.renderMap(grouped);
+        updateLists();
     })();
 }
+window.mainPage = mainPage;
 
 function viewReviews(data) {
     $(".content").empty();
@@ -99,4 +111,6 @@ function viewReviews(data) {
     }
 }
 
-mainPage();
+// window.mainPage = mainPage;
+
+// mainPage();

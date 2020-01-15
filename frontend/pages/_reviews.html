@@ -23,11 +23,6 @@
 
     }
 
-    .dorm-img {
-      width: 120px;
-      height: 120px;
-    }
-
     .is-expanded {
 
       width: 100%;
@@ -162,11 +157,11 @@
     <p class="control is-expanded">
       <input class="input" type="text" placeholder="Find a repository">
     </p> -->
-    <p class="control">
+    <!-- <p class="control">
       <a class="button is-info" id='myInput'>
         Search
       </a>
-    </p>
+    </p> -->
   </div>
 
   <div class="content">
@@ -189,10 +184,12 @@
   <script src="../node_modules/axios/dist/axios.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="autocomplete.js"></script>
-  <script src="reviews.js" type="module"></script>
   <script src="https://js.arcgis.com/4.13/"></script>
   <script src="dorms.js"></script>
+  <script src="reviews.js" type="module"></script>
   <script src="ArcGisScript.js"></script>
+
+ 
   <script>
 
 
@@ -223,9 +220,6 @@
       $('.hero').click(function () {
         $('.hero').slideUp()
       })
-      const ALL_DORMS = ["Hinton James", "Horton", "Ram Village", "Hardin", "Craig", "Craig North"];
-      autocomplete(document.getElementById("myInput"), ALL_DORMS);
-
 
     })
   </script>

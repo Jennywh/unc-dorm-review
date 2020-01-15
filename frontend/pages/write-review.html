@@ -91,7 +91,7 @@
 
 
     <form autocomplete="off" action="/action_page.php">
-      <div class="autocomplete">
+      <div>
         <input class="input" id="myInput" type="text" name="myDorm" placeholder="Search the dorm">
       </div>
     </form>
@@ -129,9 +129,6 @@
         }
       }
     });
-
-
-
     let button = $("#submit");
     button.click((ev) => {
       ev.preventDefault();
@@ -141,14 +138,13 @@
         let dorm = $("#myInput").val();
         let review = $("#paragraph").val();
         let token = localStorage['jwt'];
-
-
+        let dorms = ['Hinton James']
 
         if (token == undefined) {
           alert('Please log in')
         } else if (dorm == undefined || dorm == null || !dorms.includes(dorm)) {
           console.log(dorm);
-          // alert('Please choose a valid dorm')
+          alert('Please choose a valid dorm')
         } else if (review.length == 0 || review == null) {
           alert('Your review is empty...')
         } else {
@@ -163,17 +159,6 @@
             })
             .catch(function (error) {
             });
-
-          // let user = await axios.post("http://localhost:3000/user/reviews/" + dorm,
-          //   { "type": "merge", "data": { "dorm": dorm, "score": rating, "review": review, "author": user_info.data.user.name } })
-          //   .then(function (it) {
-          //     it => it.data
-          //     // location.href = './_user-page.html'
-          //   })
-          //   .catch(function (error) {
-
-          //   });
-
 
         }
 

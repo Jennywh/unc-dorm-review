@@ -18,7 +18,7 @@ const dormImg = {
 const dormsArr = [
     //kenan community
     {
-        name: 'kenan',
+        name: 'Kenan',
         rating: '4.5/5.0',
         coordinate: [-79.04752, 35.91459],
 

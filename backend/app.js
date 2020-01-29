@@ -24,6 +24,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(bearerToken());
 app.use(cookieParser());
 
+
 // auto-wire routes. Must export default router, and a prefix.
 const files = fs.readdirSync(path.join(__dirname, 'routes'));
 files.forEach(file => {
@@ -40,5 +41,6 @@ files.forEach(file => {
   app.use(router.prefix || '/', router.router);
   debugAutoWire(`registered '${file}' to route '${router.prefix || '/'}'`);
 });
+app.use(express.static('public'));
 
 export default app;

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blog - Tailsaw </title>
+    <link rel="stylesheet" href="https://unpkg.com/bulma@0.8.0/css/bulma.min.css" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="../styles/bulma-divider.min.css"> -->
+    <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
+
+
+    <style>
+        nav.navbar {
+            height: 6rem !important;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06) !important;
+        }
+
+        .level {
+            justify-content: space-around;
+            margin: 50px;
+        }
+
+        .level-left {
+            margin-right: 55px;
+        }
+
+        .texts {
+            width: 60%
+        }
+
+        button {
+            margin: 10px 20px 0 0;
+        }
+
+        .dorm-img {
+            width: 120px;
+            height: 120px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- START NAV -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="./index.html">
+                    <img src="../img/logo.png" alt="logo">
+                </a>
+
+                <a class="navbar-item is-active is-size-5 has-text-weight-semibold" href="./index.html">
+                    Home
+                </a>
+                <a class="navbar-item is-size-5 has-text-weight-semibold" href="./write-review.html">
+                    Write Reviews
+                </a>
+                <span class="navbar-burger burger" data-target="navbarMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </div>
+
+            <div id="navbarMenu" class="navbar-menu">
+                <div class="navbar-end">
+                    <a class="navbar-item is-size-5 has-text-weight-semibold my-reviews">
+                        My Reviews
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+    <!-- END NAV -->
+
+    <!-- Image -->
+    <section class="hero ">
+        <div class="content">
+            <div class="level">
+                <div class="level-left">
+                    My reviews: 
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <script src="../node_modules/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="dorms.js"></script>
+
+    <script>
+
+
+
+        function mainPage() {
+            // $(".content").empty();
+            (async () => {
+                let token = localStorage['jwt'];
+                if (token == undefined) {
+                    alert('Please log in');
+                } else {
+                    let user_info = await axios.get("/account/status", { headers: { Authorization: "Bearer " + token } });
+                    const apiUrl = '/public/reviews/' + user_info.data.user.name;
+                    console.log(user_info.data.user.name)
+                   
+                    const res = await axios.get(apiUrl)
+                    .then((resp)=>{
+                        let result = resp.data.result;
+                        for (let i = 0; i < result.length; i++) {
+                            let dorm = result[i]['dorm'];
+                            let star = result[i]['score'];
+                            let review = result[i]['review'];
+                            let dormicon = dormImg[dorm]==undefined?'https://picsum.photos/120':dormImg[dorm]
+                            let dom = `
+                                <div class="level ">
+                                    <div class="level-left">
+                                        <img class="level-item dorm-img" src=${dormicon} alt="sample dorm image" />
+                                    </div>
+                                    <div class="texts num${i}">
+                                        <div class="dorm-name">${dorm}</div>
+                                        <div class="stars">${star}</div>
+                                        <div class="sample-review">
+                                            ${review}
+                                        </div>
+                                        
+                                    </div>
+                                </div>`;
+
+                            $(dom).appendTo($(".content"));
+                            let id_edit = "edit" + i.toString();
+                            let id_del = "del" + i.toString();
+                            let edit = $('<button class="button is-primary" id = edit> Edit </button>');
+                            let del = $('<button class="button is-danger" id=del> Delete </button>');
+
+                            edit.appendTo($(`.num${i}`));
+                            del.appendTo($(`.num${i}`));
+                            del.click((ev) => {
+
+                            ev.preventDefault();
+                            ev.stopPropagation();
+                            ev.stopImmediatePropagation();
+                            (async () => {
+                                let r = await axios.delete("/public/reviews/" + user_info.data.user.name).then(it => it.data);
+
+                                $('.my-reviews').text(result.length)
+                                for (let j = 0; j < result.length; j++) {
+                                    if (j != i) {
+                                        let rr = await axios.post("/public/reviews/" + user_info.data.user.name,
+                                            { "type": "merge", "data": result[j] }).then(it => it.data);
+                                    }
+                                }
+                                location.reload();
+                            })();
+                        })
+                        edit.click((ev) => {
+                            ev.preventDefault();
+                            ev.stopPropagation();
+                            ev.stopImmediatePropagation();
+                            // working on result[i]
+                            // location.href = './write-review.html';
+                            let id_text = "text" + i.toString();
+                            let text = $(`<textarea class="textarea" id=${id_text}>${review}</textarea>`);
+                            text.appendTo($(`.num${i}`));
+                            let id_done = "done" + i.toString();
+                            let done = $('<button id=${id_done}> Done </button>');
+                            done.appendTo($(`.num${i}`));
+                            done.click((ev) => {
+                                ev.preventDefault();
+                                ev.stopPropagation();
+                                ev.stopImmediatePropagation();
+                                let new_score = 5; // should be the edited stars
+                                let new_review = text.val();
+                                (async () => {
+                                    let r = await axios.delete("/public/reviews/" + user_info.data.user.name).then(it => it.data);
+                                    for (let j = 0; j < result.length; j++) {
+                                        if (j != i) {
+                                            let rr = await axios.post("/public/reviews/" + user_info.data.user.name,
+                                                { "type": "merge", "data": result[j] }).then(it => it.data);
+                                        } else {
+                                            let rr = await axios.post("/public/reviews/" + user_info.data.user.name,
+                                                { "type": "merge", "data": { "dorm": dorm, "score": new_score, "review": new_review } }).then(it => it.data);
+                                        }
+                                    }
+                                    location.reload(true);
+                                })();
+                            })
+                        }
+                        )
+                    }
+                    })
+                    .catch((err)=> {
+                        console.log(err)
+                        $(".content").empty()
+                        let dom = `<div class = 'level'> You do not leave any review. Try write a review by clicking 'Write reviews'.</div>`
+                        $(dom).appendTo($(".content"))
+                    })
+                    
+                }
+            })();
+        }
+
+        mainPage();
+    </script>
+</body>
+
+</html>

@@ -48,7 +48,7 @@ router.get('/hello', function (req, res) {
 });
 ```
 ```bash
-$ curl http://localhost:3000/example/hello
+$ curl /example/hello
 {"message":"Hello from example!"}
 ```
 
@@ -76,7 +76,7 @@ We will first go over the routes that are related to *account* because they are 
 
 ## example:
 ```
-http://localhost:3000/account/create
+/account/create
 ```
 Body contents:
 ```json
@@ -115,7 +115,7 @@ Response:
 
 ## example:
 ```
-http://localhost:3000/account/login
+/account/login
 ```
 Body contents:
 ```json
@@ -146,7 +146,7 @@ Response:
 
 ## example:
 ```
-http://localhost:3000/account/status
+/account/status
 ```
 Authorization header:
 ```json
@@ -175,7 +175,7 @@ Let's start by adding some data to the `publicStore`. Whenever we want to add da
 Let's add some authors to our public datastore.
 Request and body:
 ```json
-http://localhost:3000/public/authors/
+/public/authors/
 {
   "data": {
     "Pierce Brown": {},
@@ -187,7 +187,7 @@ http://localhost:3000/public/authors/
 But we forgot someone!
 
 ```json
-http://localhost:3000/public/authors/Tolkien
+/public/authors/Tolkien
 {
   "data": {
     "books": ["The Lord of the Rings"]
@@ -215,7 +215,7 @@ This will result in `public.json` looking like the following:
 ```
 If we wanted to add some books to Pierce Brown and an age we could do the following:
 ```json
-http://localhost:3000/public/authors/Pierce Brown
+/public/authors/Pierce Brown
 {
   "data": {
     "books": ["Red Rising", "Golden Son"],
@@ -226,7 +226,7 @@ http://localhost:3000/public/authors/Pierce Brown
 #### "type": "merge"
 Now for the last step lets add "The Hobbit" to the list of books for Tolkien. You have probably realized that we will run into a problem. How can we append to the books array? One option is to make a GET request, add the book to the client side object, and make a new POST request with the modified data. The problem with this approach is that we find ourselves with a critical section problem. So we need to use the API method post as below with the **`type`** set to "merge":
 ```json
-http://localhost:3000/public/authors/Tolkien/books
+/public/authors/Tolkien/books
 {
   "data": ["The Hobbit"],
   "type": "merge"
@@ -268,7 +268,7 @@ When making GET requests to this backend API we had to make some decisions on ho
 You will see some examples below as we explore our author data. 
 
 ```json
-http://localhost:3000/public/
+/public/
 {
     "result": [
         "authors"
@@ -276,7 +276,7 @@ http://localhost:3000/public/
 }
 ```
 ```json
-http://localhost:3000/public/authors/
+/public/authors/
 {
     "result": [
         "Pierce Brown",
@@ -288,7 +288,7 @@ http://localhost:3000/public/authors/
 ```
 Notice now when we leave out the `/` at the end of authors we get **all** the data. 
 ```json
-http://localhost:3000/public/authors
+/public/authors
 {
     "result": {
         "Pierce Brown": {
@@ -315,7 +315,7 @@ http://localhost:3000/public/authors
 Delete requests are not special in any way. Simply specify the location of the object you want to delete. For example, if we want to delete Tolkien:
 
 ```json
-http://localhost:3000/public/authors/Tolkien
+/public/authors/Tolkien
 {
     "result": {
         "path": "authors.Tolkien",

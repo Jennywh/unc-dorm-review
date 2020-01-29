@@ -9,7 +9,7 @@ router.get('/hello', function (req, res) {
 });
 
 const pubRoot = new axios.create({
-  baseURL: "http://localhost:3000/account/create"
+  baseURL: "/account/create"
 });
 
 async function createAcocunt({ name = 'jenn', pass = 'password', data = '' }) {

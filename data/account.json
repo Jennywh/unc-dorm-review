@@ -97,6 +97,20 @@
         "year": "firstYear",
         "dorm": "Graham"
       }
+    },
+    "12349835894": {
+      "passwordHash": "$2b$10$doG.zx.if1XD8qjKum1feeHMj2nxKdOmul6lgUve2ONo7vgFXsLNW",
+      "data": {
+        "year": "firstYear",
+        "dorm": ""
+      }
+    },
+    "jenny20200202": {
+      "passwordHash": "$2b$10$jRhPybhDkOqc5rMZaTyNjezLkXUp3/IKwB2UcIQ/ZAgm91a5DjLEq",
+      "data": {
+        "year": "firstYear",
+        "dorm": ""
+      }
     }
   }
 }

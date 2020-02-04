@@ -12,9 +12,9 @@ router.get('/', function (req, res) {
   res.statusCode = 302; 
   res.setHeader("Location", "/index.html")
 
-  // res.send({
-  //   status: 'You have reached the root of the API!',
-  //   repo: 'https://github.com/cgburgess/comp426-backend',
-  // })
+  res.send({
+    status: 'You have reached the root of the API!',
+    repo: 'https://github.com/cgburgess/comp426-backend',
+  })
 });
 

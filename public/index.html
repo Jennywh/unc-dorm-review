@@ -95,6 +95,12 @@
     <script>
         $(function () {
 
+            $('.navbar-burger').click(function(){
+                $('#navbarMenu').toggleClass('is-active')
+            })
+
+
+
             if (localStorage.getItem('username') != null) {
                 let link = "./_user-page.html"
                 let username = localStorage.getItem('username')

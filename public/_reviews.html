@@ -51,6 +51,10 @@
     .navbar {
       background: #3298dc;
     }
+    .is-active{
+      background: #3298dc;
+
+    }
 
     .field {
       position: relative;
@@ -195,6 +199,11 @@
 
 
     $(function () {
+
+      $('.navbar-burger').click(function(){
+            $('#navbarMenu').toggleClass('is-active')
+      })
+
       if (localStorage.getItem('username') != null) {
         let link = "location.href='./_user-page.html'"
         let username = localStorage.getItem('username')

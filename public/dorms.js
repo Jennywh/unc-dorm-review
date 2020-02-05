@@ -9,9 +9,16 @@ const dormImg = {
     'Horton': 'http://reslife.web.unc.edu/files/2015/06/Horton.jpg',
     'Rams Village 1-3': 'https://pbs.twimg.com/profile_images/786619162042966016/cQ1ZtqS5_400x400.jpg',
     'Rams Village 4-5': 'https://snworksceo.imgix.net/dth/3e406ca7-b73f-4a62-8466-5120fd83aac7.sized-1000x1000.JPG?w=1000',
-    'Carmichael': 'https://snworksceo.imgix.net/dth/d03be0b6-7d47-4c88-b778-b1d82953103b.sized-1000x1000.jpg?w=1000',
+    'Carmichael': 'img/Carmichael.jpg',
     'Granville': 'https://www.newsobserver.com/latest-news/u9jtvh/picture236067933/alternates/FREE_1140/Granville%20Towers.JPEG',
-    'Old West': 'https://blogs.lib.unc.edu/ncm/wp-content/uploads/2018/10/Old_West_Final_View.jpg'
+    'Old West': 'https://blogs.lib.unc.edu/ncm/wp-content/uploads/2018/10/Old_West_Final_View.jpg',
+    'Kenan': 'https://upload.wikimedia.org/wikipedia/commons/f/f3/Kenan_Residence_Hall_at_UNC.jpg',
+    'Alderman' : 'img/Alderman.png',
+    'Mclver': 'img/Mclver.jpg',
+    'Spencer': 'img/Spencer.jpg',
+    'Aycock':'img/Aycock.jpg'
+
+
 }
 
 
